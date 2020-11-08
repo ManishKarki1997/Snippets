@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar />
-    <Nuxt style="height: calc(100vh - 4rem)" class="pt-8" />
+    <Nuxt style="height: calc(100vh - 4rem)" />
   </div>
 </template>
 

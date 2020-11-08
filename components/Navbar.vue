@@ -2,20 +2,20 @@
   <header class="bg-accent flex items-center h-16 shadow-xl text-primary">
     <nav class="container flex items-center justify-between">
       <h1>
-        <span class="text-lg">CSS</span>
+        <span class="text-lg text-gray-300">CSS</span>
         <span class="text-gray-300">snippets</span>
       </h1>
-      <ul class="flex items-center justify-between">
+      <ul class="flex items-center justify-between text-white">
         <li v-if="theme === 'dark'">
           <SunIcon
+            class="w-6 h-6 fill-current text-current cursor-pointer hover:text-gray-500 transition-all duration-500"
             @click="toggleTheme"
-            class="w-6 h-6 fill-current text-current cursor-pointer hover:text-blue-900 transition-all duration-500"
           />
         </li>
         <li v-if="theme === 'light'">
           <MoonIcon
+            class="w-6 h-6 fill-current text-current cursor-pointer hover:text-gray-500 transition-all duration-500"
             @click="toggleTheme"
-            class="w-6 h-6 fill-current text-current cursor-pointer hover:text-blue-900 transition-all duration-500"
           />
         </li>
       </ul>

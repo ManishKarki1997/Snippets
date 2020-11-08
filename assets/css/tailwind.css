@@ -5,19 +5,21 @@
   @apply .dark;
 }
 .dark {
-  --color-bg-primary: #262d3a;
-  --color-bg-secondary: #1b2227;
-  --color-bg-accent: #262d3a;
+  --color-bg-primary: #161b25;
+  --color-bg-secondary: #262d3a;
+  --color-bg-accent: #161b25;
   --color-text-primary: #f7fafc;
   --color-text-secondary: #e2e8f0;
   --color-text-accent: #81e6d9;
+  --color-text-opposite: #ffffff;
 }
 
 .light {
-  --color-bg-primary: #ffffff;
-  --color-bg-secondary: #edf2f7;
+  --color-bg-primary: #edf2f7;
+  --color-bg-secondary: #ffffff;
   --color-bg-accent: #2b6cb0;
   --color-text-primary: #2d3748;
   --color-text-secondary: #4a5568;
   --color-text-accent: #2b6cb0;
+  --color-text-opposite: #ffffff;
 }

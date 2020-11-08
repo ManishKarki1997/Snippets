@@ -1,20 +1,16 @@
 <template>
   <div class="bg-primary text-primary">
-    <div class="container">
-      <h4>Hello world</h4>
-      <div class="bg-secondary py-6 px-4 rounded my-6">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur
-          necessitatibus dolor vitae quo, nisi quaerat ipsam! Assumenda eius
-          quasi officia.
-        </p>
-      </div>
-    </div>
+    <Hero class="lg:pt-32 pt-16" />
   </div>
 </template>
 
 <script>
-export default {}
+import Hero from '@/components/Hero'
+export default {
+  components: {
+    Hero,
+  },
+}
 </script>
 
 <style>
