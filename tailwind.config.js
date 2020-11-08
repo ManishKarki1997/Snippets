@@ -19,6 +19,10 @@ module.exports = {
       },
     },
   },
-  variants: {},
+  variants: {
+    textColor: ['responsive', 'hover', 'focus', 'group-hover'],
+    backgroundColor: ['responsive', 'hover', 'focus', 'checked'],
+    display: ['responsive', 'hover', 'focus', 'group-hover'],
+  },
   plugins: [],
 }
