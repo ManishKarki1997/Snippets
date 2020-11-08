@@ -1,28 +1,30 @@
 <template>
   <div
     style="height: calc((100vh - 4rem) / 2)"
-    class="bg-accent w-full px-4 py-4"
+    class="w-full px-4 py-4 bg-accent"
   >
     <div class="container">
       <div class="text-center">
-        <h3 class="font-bold lg:text-6xl text-4xl md:text-5xl text-opposite">
+        <h3
+          class="text-4xl font-bold tracking-wider lg:text-6xl md:text-5xl text-opposite"
+        >
           CSS Snippets
         </h3>
-        <p class="text-opposite mt-6">
+        <p class="mt-8 text-lg text-opposite">
           Free and ready to use CSS snippets for generic html components.
         </p>
         <div
-          class="relative w-6/12 mx-auto bg-secondary shadow-xl hover:shadow-2xl mt-24 rounded flex items-center justify-evenly transition-all duration-300"
+          class="relative flex items-center w-6/12 mx-auto mt-24 transition-all duration-300 rounded shadow-xl bg-secondary hover:shadow-2xl justify-evenly"
         >
           <SearchIcon
-            class="absolute left-0 top-0 mt-5 text-secondary ml-4 fill-current w-6 h-6"
+            class="absolute top-0 left-0 w-6 h-6 mt-5 ml-4 fill-current text-secondary"
           />
           <input
             id="search"
             type="text"
             name="search"
             placeholder="Search for a component"
-            class="rounded bg-secondary pr-4 pl-12 py-4 w-full text-lg"
+            class="w-full py-4 pl-12 pr-4 text-lg rounded bg-secondary"
           />
         </div>
       </div>

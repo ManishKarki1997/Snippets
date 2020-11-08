@@ -1,6 +1,6 @@
 <template>
   <div
-    class="px-4 py-6 mb-2 transition-all duration-300 rounded-lg shadow cursor-pointer bg-secondary hover:shadow-xl group"
+    class="px-4 py-8 mb-2 transition-all duration-300 rounded-lg shadow cursor-pointer h-36 bg-secondary hover:shadow-xl group"
   >
     <div class="flex">
       <div
@@ -13,9 +13,11 @@
       </div>
       <div class="ml-4">
         <div>
-          <h4 class="-mt-1 text-xl font-bold">{{ category.name }}</h4>
-          <p class="my-2">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <h4 class="-mt-1 text-xl font-bold tracking-wide">
+            {{ category.name }}
+          </h4>
+          <p class="my-2 tracking-wide">
+            {{ category.description }}
           </p>
         </div>
         <!-- <div class="flex items-center justify-between mt-6">
