@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar />
-    <Nuxt style="min-height: calc(100vh - 4rem)" class="pb-12" />
+    <Nuxt style="min-height: calc(100vh - 4rem)" />
   </div>
 </template>
 

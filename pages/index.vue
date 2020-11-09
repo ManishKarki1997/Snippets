@@ -7,6 +7,14 @@
           <Category :category="category" />
         </div>
       </div>
+
+      <div
+        class="grid gap-8 mt-16 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1"
+      >
+        <div v-for="(snippet, i) in 8" :key="'snippet-' + i">
+          <Snippet :snippetImage="1000 + i" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -14,11 +22,13 @@
 <script>
 import Hero from '@/components/Hero'
 import Category from '@/components/Category'
+import Snippet from '@/components/Snippet'
 
 export default {
   components: {
     Hero,
     Category,
+    Snippet,
   },
   data() {
     return {
@@ -75,5 +85,9 @@ export default {
 /* Sample `apply` at-rules with Tailwind CSS */
 .container {
   @apply w-10/12 mx-auto;
+}
+.floating {
+  box-shadow: 0 13px 27px -5px hsla(240, 30.1%, 28%, 0.25),
+    0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03);
 }
 </style>

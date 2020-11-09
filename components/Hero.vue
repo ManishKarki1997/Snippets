@@ -1,6 +1,6 @@
 <template>
   <div
-    style="height: calc((100vh - 4rem) / 2)"
+    style="height: calc((100vh - 3rem) / 2)"
     class="w-full px-4 py-4 bg-accent"
   >
     <div class="container">
