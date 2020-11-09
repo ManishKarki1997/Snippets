@@ -97,16 +97,28 @@
 
           <div class="flex items-center w-full py-2 mt-6">
             <div
+              v-shared-element:[`snippet-tag-button-${$route.params.snippet}`]="{
+                includeChildren: true,
+                duration: '400ms',
+              }"
               class="px-2 py-1 mb-2 mr-2 transition-all duration-300 rounded text-accent"
             >
               <p class="cursor-pointer">#button</p>
             </div>
             <div
+              v-shared-element:[`snippet-tag-card-${$route.params.snippet}`]="{
+                includeChildren: true,
+                duration: '500ms',
+              }"
               class="px-2 py-1 mb-2 mr-2 transition-all duration-300 rounded text-accent"
             >
               <p class="cursor-pointer">#card</p>
             </div>
             <div
+              v-shared-element:[`snippet-tag-avatar-${$route.params.snippet}`]="{
+                includeChildren: true,
+                duration: '600ms',
+              }"
               class="px-2 py-1 mb-2 mr-2 transition-all duration-300 rounded text-accent"
             >
               <p class="cursor-pointer">#avatar</p>

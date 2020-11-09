@@ -26,19 +26,31 @@
     </div>
     <div class="flex items-center justify-between w-full px-4 py-2">
       <div
-        class="px-4 py-1 transition-all duration-300 rounded bg-primary hover:shadow text-accent"
+        v-shared-element:[`snippet-tag-button-${snippetImage}`]="{
+          includeChildren: true,
+          duration: '400ms',
+        }"
+        class="px-2 py-1 mb-2 mr-2 transition-all duration-300 rounded text-accent"
       >
-        <p>button</p>
+        <p class="cursor-pointer">#button</p>
       </div>
       <div
-        class="px-4 py-1 transition-all duration-300 rounded bg-primary hover:shadow text-accent"
+        v-shared-element:[`snippet-tag-card-${snippetImage}`]="{
+          includeChildren: true,
+          duration: '500ms',
+        }"
+        class="px-2 py-1 mb-2 mr-2 transition-all duration-300 rounded text-accent"
       >
-        <p>card</p>
+        <p class="cursor-pointer">#card</p>
       </div>
       <div
-        class="px-4 py-1 transition-all duration-300 rounded bg-primary hover:shadow text-accent"
+        v-shared-element:[`snippet-tag-avatar-${snippetImage}`]="{
+          includeChildren: true,
+          duration: '600ms',
+        }"
+        class="px-2 py-1 mb-2 mr-2 transition-all duration-300 rounded text-accent"
       >
-        <p>avatar</p>
+        <p class="cursor-pointer">#avatar</p>
       </div>
     </div>
   </div>
