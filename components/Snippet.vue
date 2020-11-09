@@ -14,7 +14,7 @@
         alt="Snippet Image"
       />
     </div>
-    <div class="px-4 my-6">
+    <div class="px-4 my-4">
       <h4
         v-shared-element:[`snippet-title-${snippetImage}`]="{
           includeChildren: true,
@@ -24,13 +24,23 @@
         Snippet
       </h4>
     </div>
-    <!-- <div class="flex items-center justify-between w-full px-4 py-4 bg-primary">
-      <button
-        class="px-4 transition-all duration-300 border border-gray-800 rounded text-primary hover:text-opposite hover:border-transparent hover:bg-accent"
+    <div class="flex items-center justify-between w-full px-4 py-2">
+      <div
+        class="px-4 py-1 transition-all duration-300 rounded bg-primary hover:shadow text-accent"
       >
-        View
-      </button>
-    </div> -->
+        <p>button</p>
+      </div>
+      <div
+        class="px-4 py-1 transition-all duration-300 rounded bg-primary hover:shadow text-accent"
+      >
+        <p>card</p>
+      </div>
+      <div
+        class="px-4 py-1 transition-all duration-300 rounded bg-primary hover:shadow text-accent"
+      >
+        <p>avatar</p>
+      </div>
+    </div>
   </div>
 </template>
 

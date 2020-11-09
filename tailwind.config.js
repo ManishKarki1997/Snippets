@@ -23,6 +23,7 @@ module.exports = {
     textColor: ['responsive', 'hover', 'focus', 'group-hover'],
     backgroundColor: ['responsive', 'hover', 'focus', 'checked'],
     display: ['responsive', 'hover', 'focus', 'group-hover'],
+    translate: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
   },
   plugins: [],
 }

@@ -23,3 +23,7 @@
   --color-text-accent: #2b6cb0;
   --color-text-opposite: #ffffff;
 }
+
+.container {
+  @apply w-10/12 mx-auto;
+}

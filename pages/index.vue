@@ -82,10 +82,7 @@ export default {
 
 <style>
 @import url('~/assets/css/tailwind.css');
-/* Sample `apply` at-rules with Tailwind CSS */
-.container {
-  @apply w-10/12 mx-auto;
-}
+
 .floating {
   box-shadow: 0 13px 27px -5px hsla(240, 30.1%, 28%, 0.25),
     0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03);

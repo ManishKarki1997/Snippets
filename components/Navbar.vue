@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-accent flex items-center h-16 shadow-xl text-primary">
+  <header class="flex items-center h-16 shadow-xl bg-accent text-primary">
     <nav class="container flex items-center justify-between">
       <h1>
         <span class="text-lg text-gray-300">CSS</span>
@@ -8,13 +8,13 @@
       <ul class="flex items-center justify-between text-white">
         <li v-if="theme === 'dark'">
           <SunIcon
-            class="w-6 h-6 fill-current text-current cursor-pointer hover:text-gray-500 transition-all duration-500"
+            class="w-6 h-6 text-current transition-all duration-500 cursor-pointer fill-current hover:text-gray-500"
             @click="toggleTheme"
           />
         </li>
         <li v-if="theme === 'light'">
           <MoonIcon
-            class="w-6 h-6 fill-current text-current cursor-pointer hover:text-gray-500 transition-all duration-500"
+            class="w-6 h-6 text-current transition-all duration-500 cursor-pointer fill-current hover:text-gray-500"
             @click="toggleTheme"
           />
         </li>
@@ -39,10 +39,12 @@ export default {
   mounted() {
     if (process.browser) {
       const theme = localStorage.getItem('css-snippets-theme')
+
       if (!theme) {
         this.theme = 'light'
       } else {
         this.theme = theme
+        window.document.body.classList.add(this.theme)
       }
     }
   },

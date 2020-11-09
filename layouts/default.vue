@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full h-full bg-primary">
     <Navbar />
     <Nuxt style="min-height: calc(100vh - 4rem)" />
   </div>
