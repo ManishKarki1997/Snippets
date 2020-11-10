@@ -40,7 +40,10 @@
               <div
                 class="h-full px-2 py-1 transition-all duration-300 transform -translate-x-20 rounded-sm cursor-pointer text-primary group-hover:translate-x-0 hover:text-accent"
               >
-                <EyeIcon class="w-5 h-5 text-current stroke-2" />
+                <EyeIcon
+                  class="w-5 h-5 text-current stroke-2"
+                  @click="showSelectedSnippet('html')"
+                />
               </div>
               <button
                 class="flex items-center px-2 py-1 transition-all duration-300 transform -translate-x-5 group-hover:-translate-x-1 text-primary"
@@ -55,7 +58,10 @@
               <div
                 class="h-full px-2 py-1 transition-all duration-300 transform -translate-x-20 rounded-sm cursor-pointer text-primary group-hover:translate-x-0 hover:text-accent"
               >
-                <EyeIcon class="w-5 h-5 text-current stroke-2" />
+                <EyeIcon
+                  class="w-5 h-5 text-current stroke-2"
+                  @click="showSelectedSnippet('css')"
+                />
               </div>
               <button
                 class="flex items-center px-2 py-1 transition-all duration-300 transform -translate-x-5 group-hover:-translate-x-1 text-primary"
@@ -70,7 +76,10 @@
               <div
                 class="h-full px-2 py-1 transition-all duration-300 transform -translate-x-20 rounded-sm cursor-pointer text-primary group-hover:translate-x-0 hover:text-accent"
               >
-                <EyeIcon class="w-5 h-5 text-current stroke-2" />
+                <EyeIcon
+                  class="w-5 h-5 text-current stroke-2"
+                  @click="showSelectedSnippet('js')"
+                />
               </div>
               <button
                 class="flex items-center px-2 py-1 transition-all duration-300 transform -translate-x-5 group-hover:-translate-x-1 text-primary"
@@ -85,7 +94,10 @@
               <div
                 class="h-full px-2 py-1 transition-all duration-300 transform -translate-x-20 rounded-sm cursor-pointer text-primary group-hover:translate-x-0 hover:text-accent"
               >
-                <EyeIcon class="w-5 h-5 text-current stroke-2" />
+                <EyeIcon
+                  class="w-5 h-5 text-current stroke-2"
+                  @click="showSelectedSnippet('html')"
+                />
               </div>
               <button
                 class="flex items-center px-2 py-1 transition-all duration-300 transform -translate-x-5 group-hover:-translate-x-1 text-primary"
@@ -127,15 +139,57 @@
         </div>
       </div>
     </div>
+
+    <transition name="slide-fade" mode="out-in">
+      <SnippetModal
+        v-if="showSnippet"
+        :snippet="selectedSnippet"
+        @closeSnippetModal="closeSnippetModal"
+      />
+    </transition>
   </div>
 </template>
 
 <script>
 import EyeIcon from '@/assets/icons/eye-outline.svg?inline'
+import SnippetModal from '@/components/SnippetModal'
 
 export default {
   components: {
     EyeIcon,
+    SnippetModal,
+  },
+  data() {
+    return {
+      showSnippet: false,
+      selectedSnippet: null,
+    }
+  },
+  methods: {
+    showSelectedSnippet(snippetType) {
+      this.showSnippet = true
+      this.selectedSnippet = {
+        snippetType,
+        snippet: `You must know," said he, "that I am an orphan and a bachelor, residing alone in lodgings in London. By profession I am a hydraulic engineer, and I have had considerable experience of my work during the seven years that I was apprenticed to Venner & Matheson, the well-known firm, of Greenwich. Two years ago, having served my time, and having also come into a fair sum of money through my poor father's death, I determined to start in business for myself and took professional chambers in Victoria Street.`,
+      }
+    },
+    closeSnippetModal() {
+      this.showSnippet = false
+      this.selectedSnippet = null
+    },
   },
 }
 </script>
+
+<style scoped>
+.slide-fade-enter-active {
+  transition: all 0.3s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter,
+.slide-fade-leave-to {
+  opacity: 0;
+}
+</style>
