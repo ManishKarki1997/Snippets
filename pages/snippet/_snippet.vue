@@ -78,7 +78,7 @@
               >
                 <EyeIcon
                   class="w-5 h-5 text-current stroke-2"
-                  @click="showSelectedSnippet('js')"
+                  @click="showSelectedSnippet('javascript')"
                 />
               </div>
               <button
@@ -166,11 +166,47 @@ export default {
     }
   },
   methods: {
-    showSelectedSnippet(snippetType) {
+    showSelectedSnippet(language) {
+      const code = {
+        javascript: `
+        const http = require('http');
+        
+        const bodyParser = require('body-parser');
+
+        http
+        .createServer((req, res) => {
+          bodyParser.parse(req, (error, body) => {
+            res.end(body)
+          })
+        })
+        .listen(3000)
+        
+         const http = require('http');
+        
+        const bodyParser = require('body-parser');
+
+        http
+        .createServer((req, res) => {
+          bodyParser.parse(req, (error, body) => {
+            res.end(body)
+          })
+        })
+        .listen(3000)`,
+        css: `
+          .button{
+            padding:4px 6px;
+            border-radius:5px;
+          }
+        `,
+        html: `
+          <div>hello world</div>
+          <p>what is up?</p>
+        `,
+      }
       this.showSnippet = true
       this.selectedSnippet = {
-        snippetType,
-        snippet: `You must know," said he, "that I am an orphan and a bachelor, residing alone in lodgings in London. By profession I am a hydraulic engineer, and I have had considerable experience of my work during the seven years that I was apprenticed to Venner & Matheson, the well-known firm, of Greenwich. Two years ago, having served my time, and having also come into a fair sum of money through my poor father's death, I determined to start in business for myself and took professional chambers in Victoria Street.`,
+        language,
+        snippet: code[language],
       }
     },
     closeSnippetModal() {

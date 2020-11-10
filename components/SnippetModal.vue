@@ -13,9 +13,17 @@
         class="absolute px-4 py-4 overflow-auto rounded-lg shadow-2xl md:w-7/12 sm:w-11/12 bg-secondary text-primary"
       >
         <h4>Pulsing Button</h4>
-        <p v-if="snippet">
-          {{ snippet.snippet }}
-        </p>
+
+        <vue-code-highlight
+          style="max-height: 80vh; height: 60vh"
+          :language="snippet.language"
+        >
+          <pre>
+           {{ snippet.snippet }}
+            </pre
+          >
+        </vue-code-highlight>
+
         <div
           class="absolute top-0 right-0 mt-4 mr-6 text-primary hover:text-accent"
         >
@@ -28,6 +36,8 @@
 
 <script>
 import CopyIcon from '@/assets/icons/copy-outline.svg?inline'
+import { component as VueCodeHighlight } from 'vue-code-highlight'
+import 'vue-code-highlight/themes/prism-tomorrow.css'
 
 export default {
   props: {
@@ -38,6 +48,7 @@ export default {
   },
   components: {
     CopyIcon,
+    VueCodeHighlight,
   },
 
   mounted() {
@@ -52,3 +63,36 @@ export default {
   },
 }
 </script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono&display=swap');
+
+pre {
+  border-radius: 5px;
+  background-color: #2d3748 !important;
+  height: 100%;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+pre::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
+}
+code,
+span {
+  font-family: 'DM Mono', monospace;
+  font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 24px;
+  letter-spacing: -0.2px;
+}
+span.token.operator {
+  background: transparent !important;
+}
+
+code[class*='language-'] {
+  text-shadow: none;
+}
+</style>
