@@ -29,6 +29,7 @@
           >
             Hello World
           </h4>
+
           <p>
             Culpa ullam modi harum nostrum quibusdam cum delectus recusandae.
           </p>
@@ -140,7 +141,7 @@
       </div>
     </div>
 
-    <transition name="slide-fade" mode="out-in">
+    <transition name="fade" mode="out-in">
       <SnippetModal
         v-if="showSnippet"
         :snippet="selectedSnippet"
@@ -166,6 +167,11 @@ export default {
     }
   },
   methods: {
+    showNotification() {
+      this.$store.commit('ADD_NOTIFICATION', {
+        id: Math.random() * 200 + Date.now().toString(),
+      })
+    },
     showSelectedSnippet(language) {
       const code = {
         javascript: `
@@ -218,14 +224,14 @@ export default {
 </script>
 
 <style scoped>
-.slide-fade-enter-active {
+.fade-enter-active {
   transition: all 0.3s ease;
 }
-.slide-fade-leave-active {
+.fade-leave-active {
   transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
 }
-.slide-fade-enter,
-.slide-fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 </style>

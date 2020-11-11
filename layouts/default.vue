@@ -2,14 +2,34 @@
   <div class="w-full h-full bg-primary">
     <Navbar />
     <Nuxt style="min-height: calc(100vh - 4rem)" />
+    <transition-group
+      name="slide-fade"
+      mode="out-in"
+      tag="div"
+      class="fixed bottom-0 right-0 mb-6 mr-6"
+    >
+      <Notification
+        v-for="notification in notifications"
+        :key="notification.id"
+        :notification="notification"
+      />
+    </transition-group>
+    <p>{{ notifications.length }}</p>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Navbar from '~/components/Navbar'
+import Notification from '~/components/Notification'
+
 export default {
   components: {
     Navbar,
+    Notification,
+  },
+  computed: {
+    ...mapState(['notifications']),
   },
 }
 </script>
