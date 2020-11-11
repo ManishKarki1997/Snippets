@@ -36,7 +36,7 @@
 
           <div class="flex items-center my-6">
             <div
-              class="flex items-center mr-4 overflow-hidden rounded bg-primary text-primary group"
+              class="flex items-center mr-4 overflow-hidden rounded text-primary group"
             >
               <div
                 class="h-full px-2 py-1 transition-all duration-300 transform -translate-x-20 rounded-sm cursor-pointer text-primary group-hover:translate-x-0 hover:text-accent"
@@ -48,6 +48,7 @@
               </div>
               <button
                 class="flex items-center px-2 py-1 transition-all duration-300 transform -translate-x-5 group-hover:-translate-x-1 text-primary"
+                @click="copySnippet('html')"
               >
                 HTML
               </button>
@@ -66,6 +67,7 @@
               </div>
               <button
                 class="flex items-center px-2 py-1 transition-all duration-300 transform -translate-x-5 group-hover:-translate-x-1 text-primary"
+                @click="copySnippet('css')"
               >
                 CSS
               </button>
@@ -84,6 +86,7 @@
               </div>
               <button
                 class="flex items-center px-2 py-1 transition-all duration-300 transform -translate-x-5 group-hover:-translate-x-1 text-primary"
+                @click="copySnippet('javascript')"
               >
                 JS
               </button>
@@ -102,6 +105,7 @@
               </div>
               <button
                 class="flex items-center px-2 py-1 transition-all duration-300 transform -translate-x-5 group-hover:-translate-x-1 text-primary"
+                @click="copySnippet('html')"
               >
                 Tailwind
               </button>
@@ -148,6 +152,12 @@
         @closeSnippetModal="closeSnippetModal"
       />
     </transition>
+
+    <!-- to copy the original snippet, in proper formatted form, not parsed with highlight js. hide it from sight -->
+    <pre class="absolute top-0 original-snippet" style="left: -99999px">
+          {{ selectedSnippet ? selectedSnippet.snippet : '' }}
+        </pre
+    >
   </div>
 </template>
 
@@ -164,16 +174,7 @@ export default {
     return {
       showSnippet: false,
       selectedSnippet: null,
-    }
-  },
-  methods: {
-    showNotification() {
-      this.$store.commit('ADD_NOTIFICATION', {
-        id: Math.random() * 200 + Date.now().toString(),
-      })
-    },
-    showSelectedSnippet(language) {
-      const code = {
+      code: {
         javascript: `
         const http = require('http');
         
@@ -208,16 +209,42 @@ export default {
           <div>hello world</div>
           <p>what is up?</p>
         `,
-      }
+      },
+    }
+  },
+  methods: {
+    showSelectedSnippet(language) {
       this.showSnippet = true
       this.selectedSnippet = {
         language,
-        snippet: code[language],
+        snippet: this.code[language],
       }
     },
     closeSnippetModal() {
       this.showSnippet = false
       this.selectedSnippet = null
+    },
+    copySnippet(language) {
+      this.selectedSnippet = {
+        language,
+        snippet: this.code[language],
+      }
+      // wait like 50ms to set the "selectedSnippet"
+      setTimeout(() => {
+        const snippetEl = document.querySelector('.original-snippet')
+        const range = document.createRange()
+        range.selectNode(snippetEl)
+        window.getSelection().removeAllRanges()
+        window.getSelection().addRange(range)
+        document.execCommand('copy')
+        window.getSelection().removeAllRanges()
+        this.showNotification()
+      }, 50)
+    },
+    showNotification() {
+      this.$store.commit('ADD_NOTIFICATION', {
+        id: Math.random() * 200 + Date.now().toString(),
+      })
     },
   },
 }

@@ -27,7 +27,10 @@
         <div
           class="absolute top-0 right-0 mt-4 mr-6 text-primary hover:text-accent"
         >
-          <CopyIcon class="w-6 h-6 text-current cursor-pointer" />
+          <CopyIcon
+            class="w-6 h-6 text-current cursor-pointer"
+            @click="copySnippet"
+          />
         </div>
       </div>
     </div>
@@ -60,6 +63,23 @@ export default {
         this.$emit('closeSnippetModal')
       }
     }
+  },
+  methods: {
+    copySnippet() {
+      const snippetEl = document.querySelector('.original-snippet')
+      const range = document.createRange()
+      range.selectNode(snippetEl)
+      window.getSelection().removeAllRanges()
+      window.getSelection().addRange(range)
+      document.execCommand('copy')
+      window.getSelection().removeAllRanges()
+      this.showNotification()
+    },
+    showNotification() {
+      this.$store.commit('ADD_NOTIFICATION', {
+        id: Math.random() * 200 + Date.now().toString(),
+      })
+    },
   },
 }
 </script>
