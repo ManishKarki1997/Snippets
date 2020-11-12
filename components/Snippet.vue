@@ -1,5 +1,6 @@
 <template>
   <div
+    tabindex="0"
     class="mb-2 overflow-hidden transition-all duration-300 rounded-lg shadow cursor-pointer h-36 bg-secondary hover:shadow-xl group"
     @click="viewSnippet(snippetImage)"
   >
@@ -32,7 +33,7 @@
         }"
         class="px-2 py-1 mb-2 mr-2 transition-all duration-300 rounded text-accent"
       >
-        <p class="cursor-pointer">#button</p>
+        <button class="cursor-pointer">#button</button>
       </div>
       <div
         v-shared-element:[`snippet-tag-card-${snippetImage}`]="{
@@ -41,7 +42,7 @@
         }"
         class="px-2 py-1 mb-2 mr-2 transition-all duration-300 rounded text-accent"
       >
-        <p class="cursor-pointer">#card</p>
+        <button class="cursor-pointer">#card</button>
       </div>
       <div
         v-shared-element:[`snippet-tag-avatar-${snippetImage}`]="{
@@ -50,7 +51,7 @@
         }"
         class="px-2 py-1 mb-2 mr-2 transition-all duration-300 rounded text-accent"
       >
-        <p class="cursor-pointer">#avatar</p>
+        <button class="cursor-pointer">#avatar</button>
       </div>
     </div>
   </div>

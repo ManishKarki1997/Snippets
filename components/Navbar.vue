@@ -1,19 +1,25 @@
 <template>
   <header class="flex items-center h-16 shadow-xl bg-accent text-primary">
     <nav class="container flex items-center justify-between">
-      <h1>
-        <span class="text-lg text-gray-300">CSS</span>
-        <span class="text-gray-300">snippets</span>
-      </h1>
+      <nuxt-link to="/">
+        <h1>
+          <span class="text-lg text-gray-300">CSS</span>
+          <span class="text-gray-300">snippets</span>
+        </h1>
+      </nuxt-link>
       <ul class="flex items-center justify-between text-white">
         <li v-if="theme === 'dark'">
           <SunIcon
+            role="button"
+            tabindex="0"
             class="w-6 h-6 text-current transition-all duration-500 cursor-pointer fill-current hover:text-gray-500"
             @click="toggleTheme"
           />
         </li>
         <li v-if="theme === 'light'">
           <MoonIcon
+            role="button"
+            tabindex="0"
             class="w-6 h-6 text-current transition-all duration-500 cursor-pointer fill-current hover:text-gray-500"
             @click="toggleTheme"
           />

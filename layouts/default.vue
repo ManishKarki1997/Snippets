@@ -14,7 +14,6 @@
         :notification="notification"
       />
     </transition-group>
-    <p>{{ notifications.length }}</p>
   </div>
 </template>
 

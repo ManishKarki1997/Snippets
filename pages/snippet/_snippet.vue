@@ -120,7 +120,7 @@
               }"
               class="px-2 py-1 mb-2 mr-2 transition-all duration-300 rounded text-accent"
             >
-              <p class="cursor-pointer">#button</p>
+              <button class="cursor-pointer">#button</button>
             </div>
             <div
               v-shared-element:[`snippet-tag-card-${$route.params.snippet}`]="{
@@ -129,7 +129,7 @@
               }"
               class="px-2 py-1 mb-2 mr-2 transition-all duration-300 rounded text-accent"
             >
-              <p class="cursor-pointer">#card</p>
+              <button class="cursor-pointer">#card</button>
             </div>
             <div
               v-shared-element:[`snippet-tag-avatar-${$route.params.snippet}`]="{
@@ -138,7 +138,7 @@
               }"
               class="px-2 py-1 mb-2 mr-2 transition-all duration-300 rounded text-accent"
             >
-              <p class="cursor-pointer">#avatar</p>
+              <button class="cursor-pointer">#avatar</button>
             </div>
           </div>
         </div>
@@ -170,6 +170,9 @@ export default {
     EyeIcon,
     SnippetModal,
   },
+  mounted() {
+    this.fetchSnipepts()
+  },
   data() {
     return {
       showSnippet: false,
@@ -177,7 +180,7 @@ export default {
       code: {
         javascript: `
         const http = require('http');
-        
+
         const bodyParser = require('body-parser');
 
         http
@@ -187,9 +190,9 @@ export default {
           })
         })
         .listen(3000)
-        
+
          const http = require('http');
-        
+
         const bodyParser = require('body-parser');
 
         http
@@ -245,6 +248,13 @@ export default {
       this.$store.commit('ADD_NOTIFICATION', {
         id: Math.random() * 200 + Date.now().toString(),
       })
+    },
+
+    async fetchSnipepts() {
+      const res = await this.$contentful.client.getEntries({
+        content_type: 'snippets',
+      })
+      console.log(res)
     },
   },
 }

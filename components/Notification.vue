@@ -16,14 +16,14 @@
 <script>
 import ConfettiIcon from '@/assets/icons/confetti.svg?inline'
 export default {
+  components: {
+    ConfettiIcon,
+  },
   props: {
     notification: {
       type: Object,
       required: true,
     },
-  },
-  components: {
-    ConfettiIcon,
   },
   data() {
     return {
