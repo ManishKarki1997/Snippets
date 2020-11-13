@@ -10,6 +10,8 @@ html: >-
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
 
 
+
+
               <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
 
 
@@ -97,16 +99,24 @@ tailwind: >-
      <svg class="w-4 h-4 text-black transition-all duration-300 transform -translate-x-40 border rounded-sm cursor-pointer stroke-2 group-hover:-translate-x-2 hover:text-blue-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
 
 
+
+
               <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
 
 
               <circle cx="12" cy="12" r="3" />
 
 
+
+
   </svg>
 
 
+
+
   <span class="text-gray-900 transition-all duration-300 transform -translate-x-2 group-hover:translate-x-2">Preview</span>
+
+
 
 
   </button>
