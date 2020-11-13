@@ -9,7 +9,7 @@ collections:
   - name: 'snippets'
     label: 'Snippets'
     folder: 'content/snippets'
-    format: 'json'
+    format: 'frontmatter'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     public_folder: '/images/uploads'

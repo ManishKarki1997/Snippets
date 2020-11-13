@@ -66,6 +66,7 @@ export default {
   },
   async asyncData({ $content, params }) {
     const snippets = await $content('snippets').fetch()
+    console.log(snippets)
     return { snippets }
   },
   data() {
