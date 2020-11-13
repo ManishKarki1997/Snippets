@@ -27,6 +27,10 @@
           >
             {{ snippet.title }}
           </h4>
+          <vue-code-highlight language="html" class="h-64">
+            <pre class="text-white">{{ snippet.html }}</pre>
+          </vue-code-highlight>
+
           <p>
             {{ snippet.description }}
           </p>
@@ -145,13 +149,32 @@
 </template>
 
 <script>
+import beautify from 'beautify'
 import EyeIcon from '@/assets/icons/eye-outline.svg?inline'
 import SnippetModal from '@/components/SnippetModal'
+
+import { component as VueCodeHighlight } from 'vue-code-highlight'
+import 'vue-code-highlight/themes/prism-tomorrow.css'
 
 export default {
   components: {
     EyeIcon,
     SnippetModal,
+    VueCodeHighlight,
+  },
+  filters: {
+    formatCSS(css) {
+      if (!css) return ''
+      return beautify(css, { format: 'css' })
+    },
+    formatJS(js) {
+      if (!js) return ''
+      return beautify(js, { format: 'js' })
+    },
+    formatHTML(html) {
+      if (!html) return ''
+      return beautify(html, { format: 'html' })
+    },
   },
   async asyncData({ $content, params }) {
     const snippets = await $content('snippets')
