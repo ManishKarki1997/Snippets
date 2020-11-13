@@ -38,20 +38,35 @@
 </template>
 
 <script>
+import beautify from 'beautify'
 import CopyIcon from '@/assets/icons/copy-outline.svg?inline'
 import { component as VueCodeHighlight } from 'vue-code-highlight'
 import 'vue-code-highlight/themes/prism-tomorrow.css'
 
 export default {
+  components: {
+    CopyIcon,
+    VueCodeHighlight,
+  },
   props: {
     snippet: {
       type: Object,
       required: true,
     },
   },
-  components: {
-    CopyIcon,
-    VueCodeHighlight,
+  filters: {
+    formatHTML(html) {
+      if (!html) return ''
+      return beautify(html, { format: 'html' })
+    },
+    formatCSS(css) {
+      if (!css) return ''
+      return beautify(css, { format: 'css' })
+    },
+    formatJS(js) {
+      if (!js) return ''
+      return beautify(js, { format: 'js' })
+    },
   },
 
   mounted() {

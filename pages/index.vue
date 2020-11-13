@@ -11,8 +11,9 @@
       <div
         class="grid gap-8 mt-16 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1"
       >
-        <div v-for="(snippet, i) in 8" :key="'snippet-' + i">
-          <Snippet :snippetImage="1000 + i" />
+        <div v-for="(snippet, i) in snippets" :key="'snippet-' + i">
+          <Snippet :snippet="snippet" />
+          <!-- <Snippet :snippetImage="1000 + i" /> -->
         </div>
       </div>
     </div>
@@ -77,6 +78,10 @@ export default {
         },
       ],
     }
+  },
+  async asyncData({ $content, params }) {
+    const snippets = await $content('blog').limit(5).fetch()
+    return { snippets }
   },
   head() {
     return {

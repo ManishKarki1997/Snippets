@@ -13,6 +13,7 @@
   "dependencies": {
     "@nuxt/content": "^1.10.0",
     "@nuxtjs/pwa": "^3.0.2",
+    "beautify": "0.0.8",
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6",
     "v-shared-element": "^2.1.1",
