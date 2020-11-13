@@ -8,6 +8,7 @@
         </div>
       </div>
 
+      </div>
       <div class="flex items-center justify-between w-full mt-24 mb-6">
         <p class="text-lg">
           <span class="font-bold">{{ snippets.length }}</span> Snippets
@@ -133,5 +134,41 @@ export default {
 .floating {
   box-shadow: 0 13px 27px -5px hsla(240, 30.1%, 28%, 0.25),
     0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03);
+}
+
+.button {
+  color: #1a202c;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #2d3748;
+  border-radius: 0.25rem;
+  padding: 0.25rem 1.5rem;
+  overflow: hidden;
+}
+.button svg {
+  width: 1rem;
+  height: 1rem;
+  stroke-width: 2px;
+  stroke: black;
+  cursor: pointer;
+  transform: translateX(-10rem);
+  transition: all 0.3s ease-in-out;
+}
+
+.button svg:hover {
+  stroke: #2c5282;
+}
+
+.button:hover svg {
+  transform: translateX(-0.5rem);
+}
+
+.button span {
+  transform: translateX(-0.5rem);
+  transition: all 0.3s ease-in-out;
+}
+.button:hover span {
+  transform: translateX(0.5rem);
 }
 </style>
