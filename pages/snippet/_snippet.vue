@@ -170,9 +170,7 @@ export default {
     EyeIcon,
     SnippetModal,
   },
-  mounted() {
-    this.fetchSnipepts()
-  },
+
   data() {
     return {
       showSnippet: false,
@@ -248,13 +246,6 @@ export default {
       this.$store.commit('ADD_NOTIFICATION', {
         id: Math.random() * 200 + Date.now().toString(),
       })
-    },
-
-    async fetchSnipepts() {
-      const res = await this.$contentful.client.getEntries({
-        content_type: 'snippets',
-      })
-      console.log(res)
     },
   },
 }

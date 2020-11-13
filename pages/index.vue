@@ -30,6 +30,7 @@ export default {
     Category,
     Snippet,
   },
+
   data() {
     return {
       categories: [
@@ -74,6 +75,13 @@ export default {
             'Input search component with SVG icons, animations and transitions',
           total: 7,
         },
+      ],
+    }
+  },
+  head() {
+    return {
+      script: [
+        { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' },
       ],
     }
   },

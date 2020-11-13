@@ -12,10 +12,18 @@ collections:
     format: 'frontmatter'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    public_folder: '/images/uploads'
     editor:
       preview: false
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Demo Image', name: 'demo_image', widget: 'image' }
+      - { label: 'HTML', name: 'html', widget: 'string' }
+      - { label: 'CSS', name: 'css', widget: 'string' }
+      - { label: 'Javascript', name: 'js', widget: 'string' }
+      - { label: 'Tailwind', name: 'tailwind', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Tags', name: 'tags', widget: 'list', max: 3 }
