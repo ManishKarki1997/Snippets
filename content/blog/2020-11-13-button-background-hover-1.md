@@ -3,27 +3,25 @@ title: Button Background Hover
 demo_image: /images/uploads/normal-hover-button.gif
 html: <button class="button">Login</button>
 css: |-
-  .button {
+  `.button {`
 
-    padding: 4px 16px;
+  `  padding: 4px 16px;`
 
-    border-radius: 3px;
+  `  border-radius: 3px;`
 
-    border: 1px solid #2b6cb0;
+  `  border: 1px solid #2b6cb0;`
 
-    transition: all 0.3s ease-in-out;
+  `  transition: all 0.3s ease-in-out;`
 
-  }
+  `}`
 
+  `.button:hover {`
 
+  `  background: #2b6cb0;`
 
-  .button:hover {
+  `  color: white;`
 
-    background: #2b6cb0;
-
-    color: white;
-
-  }
+  `}`
 js: ""
 tailwind: >-
   <button
@@ -31,9 +29,6 @@ tailwind: >-
 
 
   hover:text-white hover:bg-blue-700">Login</button>
-
-
-  ~
 date: 2020-11-13T09:10:12.985Z
 description: A simple bordered button that changes different background color on hover.
 tags:
