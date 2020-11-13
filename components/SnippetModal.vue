@@ -18,8 +18,16 @@
           style="max-height: 80vh; height: 60vh"
           :language="snippet.language"
         >
-          <pre>
-           {{ snippet.snippet }}
+          <pre v-if="snippet.language === 'js'">
+           {{ snippet.snippet | formatJS }}
+            </pre
+          >
+          <pre v-if="snippet.language === 'html'">
+           {{ snippet.snippet | formatHTML }}
+            </pre
+          >
+          <pre v-if="snippet.language === 'css'">
+           {{ snippet.snippet | formatCSS }}
             </pre
           >
         </vue-code-highlight>
@@ -48,12 +56,7 @@ export default {
     CopyIcon,
     VueCodeHighlight,
   },
-  props: {
-    snippet: {
-      type: Object,
-      required: true,
-    },
-  },
+
   filters: {
     formatHTML(html) {
       if (!html) return ''
@@ -68,7 +71,12 @@ export default {
       return beautify(js, { format: 'js' })
     },
   },
-
+  props: {
+    snippet: {
+      type: Object,
+      required: true,
+    },
+  },
   mounted() {
     window.onclick = (event) => {
       const modalBackground = document.getElementById(

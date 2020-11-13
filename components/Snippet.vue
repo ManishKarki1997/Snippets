@@ -1,36 +1,35 @@
 <template>
   <div
     tabindex="0"
-    class="mb-2 overflow-hidden transition-all duration-300 rounded-lg shadow cursor-pointer h-36 bg-secondary hover:shadow-xl group"
+    class="mb-2 overflow-hidden transition-all duration-300 rounded-lg shadow-xl cursor-pointer h-36 bg-secondary hover:shadow-xl group"
+    @click="viewSnippet(snippet)"
   >
-    <!-- @click="viewSnippet(snippetImage)" -->
     <div class="w-full h-64">
       <img
-        v-shared-element:[`image-${snippetImage}`]="{
+        v-shared-element:[`${snippet.slug}-image-${snippet.demo_image}`]="{
           includeChildren: true,
           duration: '500ms',
         }"
         class="object-cover w-full h-full"
-        :src="`https://picsum.photos/id/${snippetImage - 1}/200/300`"
+        :src="snippet.demo_image"
         alt="Snippet Image"
       />
     </div>
     <div class="px-4 my-4">
       <h4
-        v-shared-element:[`snippet-title-${snippetImage}`]="{
+        v-shared-element:[`${snippet.slug}-title-${snippet.demo_image}`]="{
           includeChildren: true,
         }"
         class="-mt-1 text-xl font-bold tracking-wide"
       >
         {{ snippet.title }}
       </h4>
-      <!-- <p>{{ snippet.demo_image }}</p> -->
     </div>
     <div class="flex items-center w-full px-4 py-2">
       <div
         v-for="tag in snippet.tags"
         :key="snippet.slug + '-' + tag"
-        v-shared-element:[`snippet-tag-button-${snippetImage}`]="{
+        v-shared-element:[`snippet-tag-button-${tag}`]="{
           includeChildren: true,
           duration: '400ms',
         }"
@@ -50,9 +49,7 @@ export default {
       required: true,
     },
   },
-  mounted() {
-    console.log(this.snippet)
-  },
+
   data() {
     return {
       snippetImage: 1001,
@@ -60,8 +57,8 @@ export default {
   },
 
   methods: {
-    viewSnippet(snippetImage) {
-      this.$router.push(`/snippet/${snippetImage}`)
+    viewSnippet(snippet) {
+      this.$router.push(`/snippet/${snippet.slug}`)
     },
   },
 }

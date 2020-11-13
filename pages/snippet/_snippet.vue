@@ -7,14 +7,12 @@
           class="w-full overflow-hidden rounded-lg shadow-xl"
         >
           <img
-            v-shared-element:[`image-${$route.params.snippet}`]="{
+            v-shared-element:[`${snippet.slug}-image-${snippet.demo_image}`]="{
               includeChildren: true,
               duration: '500ms',
             }"
             class="object-cover w-full h-full rounded-lg"
-            :src="`https://picsum.photos/id/${
-              $route.params.snippet - 1
-            }/200/300`"
+            :src="snippet.demo_image"
             alt="Snippet Image"
           />
         </div>
@@ -22,16 +20,16 @@
       <div class="w-7/12 px-4 py-10 bg-primary text-primary">
         <div class="w-full h-full px-6 py-6 rounded bg-secondary">
           <h4
-            v-shared-element:[`snippet-title-${$route.params.snippet}`]="{
+            v-shared-element:[`${snippet.slug}-title-${snippet.demo_image}`]="{
               includeChildren: true,
             }"
             class="-mt-1 text-xl font-bold tracking-wide"
           >
-            Hello World
+            {{ snippet.title }}
           </h4>
 
           <p>
-            Culpa ullam modi harum nostrum quibusdam cum delectus recusandae.
+            {{ snippet.description }}
           </p>
 
           <div class="flex items-center my-6">
@@ -74,6 +72,7 @@
             </div>
 
             <div
+              v-if="snippet.js"
               class="flex items-center mr-4 overflow-hidden rounded bg-primary text-primary group"
             >
               <div
@@ -81,18 +80,19 @@
               >
                 <EyeIcon
                   class="w-5 h-5 text-current stroke-2"
-                  @click="showSelectedSnippet('javascript')"
+                  @click="showSelectedSnippet('js')"
                 />
               </div>
               <button
                 class="flex items-center px-2 py-1 transition-all duration-300 transform -translate-x-5 group-hover:-translate-x-1 text-primary"
-                @click="copySnippet('javascript')"
+                @click="copySnippet('js')"
               >
                 JS
               </button>
             </div>
 
             <div
+              v-if="snippet.tailwind"
               class="flex items-center mr-4 overflow-hidden rounded bg-primary text-primary group"
             >
               <div
@@ -114,31 +114,15 @@
 
           <div class="flex items-center w-full py-2 mt-6">
             <div
-              v-shared-element:[`snippet-tag-button-${$route.params.snippet}`]="{
+              v-for="tag in snippet.tags"
+              :key="snippet.slug + '-' + tag"
+              v-shared-element:[`snippet-tag-button-${tag}`]="{
                 includeChildren: true,
                 duration: '400ms',
               }"
               class="px-2 py-1 mb-2 mr-2 transition-all duration-300 rounded text-accent"
             >
-              <button class="cursor-pointer">#button</button>
-            </div>
-            <div
-              v-shared-element:[`snippet-tag-card-${$route.params.snippet}`]="{
-                includeChildren: true,
-                duration: '500ms',
-              }"
-              class="px-2 py-1 mb-2 mr-2 transition-all duration-300 rounded text-accent"
-            >
-              <button class="cursor-pointer">#card</button>
-            </div>
-            <div
-              v-shared-element:[`snippet-tag-avatar-${$route.params.snippet}`]="{
-                includeChildren: true,
-                duration: '600ms',
-              }"
-              class="px-2 py-1 mb-2 mr-2 transition-all duration-300 rounded text-accent"
-            >
-              <button class="cursor-pointer">#avatar</button>
+              <button class="cursor-pointer">#{{ tag }}</button>
             </div>
           </div>
         </div>
@@ -170,7 +154,10 @@ export default {
     EyeIcon,
     SnippetModal,
   },
-
+  async asyncData({ $content, params }) {
+    const snippets = await $content('blog').where({ slug: params.slug }).fetch()
+    return { snippet: snippets[0] }
+  },
   data() {
     return {
       showSnippet: false,
@@ -218,7 +205,7 @@ export default {
       this.showSnippet = true
       this.selectedSnippet = {
         language,
-        snippet: this.code[language],
+        snippet: this.snippet[language],
       }
     },
     closeSnippetModal() {
