@@ -17,12 +17,21 @@ collections:
       preview: false
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Demo Image', name: 'demo_image', widget: 'image' }
-      - { label: 'HTML', name: 'html', widget: 'string' }
-      - { label: 'CSS', name: 'css', widget: 'string' }
-      - { label: 'Javascript', name: 'js', widget: 'string' }
-      - { label: 'Tailwind', name: 'tailwind', widget: 'string' }
+      - {
+          label: 'Demo Image',
+          name: 'demo_image',
+          widget: 'image',
+          required: false,
+        }
+      - { label: 'HTML', name: 'html', widget: 'markdown', required: false }
+      - { label: 'CSS', name: 'css', widget: 'markdown', required: false }
+      - { label: 'Javascript', name: 'js', widget: 'markdown', required: false }
+      - {
+          label: 'Tailwind',
+          name: 'tailwind',
+          widget: 'markdown',
+          required: false,
+        }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Description', name: 'description', widget: 'markdown' }
       - { label: 'Tags', name: 'tags', widget: 'list', max: 3 }

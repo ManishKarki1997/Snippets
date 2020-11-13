@@ -1,5 +1,6 @@
 function state() {
   return {
+    snippets: [],
     notifications: [],
   }
 }

@@ -7,6 +7,10 @@ const mutation = {
       (n) => n.id !== notificationId
     )
   },
+  SET_SNIPPETS(state, snippets) {
+    console.log(snippets)
+    state.snippets = snippets
+  },
 }
 
 export default mutation

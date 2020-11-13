@@ -170,7 +170,11 @@ export default {
     EyeIcon,
     SnippetModal,
   },
-
+  async asyncData({ $content, params }) {
+    const snippets = await $content('blog').limit(5).fetch()
+    console.log(snippets)
+    return { snippets }
+  },
   data() {
     return {
       showSnippet: false,
