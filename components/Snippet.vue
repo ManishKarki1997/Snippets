@@ -10,20 +10,20 @@
           includeChildren: true,
           duration: '500ms',
         }"
-        class="object-cover w-full h-full"
+        class="object-cover w-full"
         :src="snippet.demo_image"
         alt="Snippet Image"
       />
     </div>
     <div class="px-4 my-4">
-      <h4
+      <p
         v-shared-element:[`${snippet.slug}-title-${snippet.demo_image}`]="{
           includeChildren: true,
         }"
-        class="-mt-1 text-xl font-bold tracking-wide"
+        class="-mt-1 text-lg font-bold tracking-wide"
       >
         {{ snippet.title }}
-      </h4>
+      </p>
     </div>
     <div class="flex items-center w-full px-4 py-2">
       <div

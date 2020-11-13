@@ -4,7 +4,7 @@
       <div class="flex items-center justify-center w-5/12 bg-primary">
         <div
           style="height: 80vh"
-          class="w-full overflow-hidden rounded-lg shadow-xl"
+          class="w-full overflow-hidden border border-gray-800 rounded shadow-xl"
         >
           <img
             v-shared-element:[`${snippet.slug}-image-${snippet.demo_image}`]="{
@@ -27,7 +27,6 @@
           >
             {{ snippet.title }}
           </h4>
-
           <p>
             {{ snippet.description }}
           </p>
@@ -155,7 +154,9 @@ export default {
     SnippetModal,
   },
   async asyncData({ $content, params }) {
-    const snippets = await $content('blog').where({ slug: params.slug }).fetch()
+    const snippets = await $content('snippets')
+      .where({ slug: params.snippet })
+      .fetch()
     return { snippet: snippets[0] }
   },
   data() {

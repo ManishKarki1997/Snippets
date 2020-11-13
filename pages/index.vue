@@ -7,47 +7,47 @@
           <Category :category="category" />
         </div>
       </div>
-    </div>
-    <div class="flex items-center justify-between w-full mt-24 mb-6">
-      <p class="text-lg">
-        <span class="font-bold">{{ snippets.length }}</span> Snippets
-      </p>
+      <div class="flex items-center justify-between w-full mt-24 mb-6">
+        <p class="text-lg">
+          <span class="font-bold">{{ snippets.length }}</span> Snippets
+        </p>
 
-      <div class="flex items-center px-3">
-        <label
-          class="block mr-2 text-xs font-bold tracking-wide uppercase text-secondary"
-          for="grid-state"
-        >
-          Sort By
-        </label>
-        <div class="relative">
-          <select
-            id="grid-state"
-            class="block w-full px-4 py-2 pr-8 leading-tight border border-gray-500 rounded appearance-none text-secondary bg-secondary focus:outline-none focus:border-gray-800"
+        <div class="flex items-center px-3">
+          <label
+            class="block mr-2 text-xs font-bold tracking-wide uppercase text-secondary"
+            for="grid-state"
           >
-            <option>Uploaded Date</option>
-            <option>Alphabetical</option>
-          </select>
-          <div
-            class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none text-secondary"
-          >
-            <svg
-              class="w-4 h-4 fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
+            Sort By
+          </label>
+          <div class="relative">
+            <select
+              id="grid-state"
+              class="block w-full px-4 py-2 pr-8 leading-tight border border-gray-500 rounded appearance-none text-secondary bg-secondary focus:outline-none focus:border-gray-800"
             >
-              <path
-                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-              />
-            </svg>
+              <option>Uploaded Date</option>
+              <option>Alphabetical</option>
+            </select>
+            <div
+              class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none text-secondary"
+            >
+              <svg
+                class="w-4 h-4 fill-current"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                />
+              </svg>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="grid gap-8 pb-8 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1">
-      <div v-for="(snippet, i) in snippets" :key="'snippet-' + i">
-        <Snippet :snippet="snippet" />
+      <div class="grid gap-8 pb-8 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1">
+        <div v-for="(snippet, i) in snippets" :key="'snippet-' + i">
+          <Snippet :snippet="snippet" />
+        </div>
       </div>
     </div>
   </div>
@@ -65,7 +65,7 @@ export default {
     Snippet,
   },
   async asyncData({ $content, params }) {
-    const snippets = await $content('blog').fetch()
+    const snippets = await $content('snippets').fetch()
     return { snippets }
   },
   data() {
