@@ -19,22 +19,20 @@
       </div>
       <div class="w-7/12 px-4 py-10 bg-primary text-primary">
         <div class="w-full h-full px-6 py-6 rounded bg-secondary">
-          <h4
-            v-shared-element:[`${snippet.slug}-title-${snippet.demo_image}`]="{
-              includeChildren: true,
-            }"
-            class="-mt-1 text-xl font-bold tracking-wide"
-          >
-            {{ snippet.title }}
-          </h4>
-          <vue-code-highlight language="html" class="h-64">
-            <pre class="text-white">{{ snippet.html }}</pre>
-          </vue-code-highlight>
+          <div class="w-full">
+            <h4
+              v-shared-element:[`${snippet.slug}-title-${snippet.demo_image}`]="{
+                includeChildren: true,
+              }"
+              class="-mt-1 text-xl font-bold tracking-wide"
+            >
+              {{ snippet.title }}
+            </h4>
 
-          <p>
-            {{ snippet.description }}
-          </p>
-
+            <p class="break-words">
+              {{ snippet.description }}
+            </p>
+          </div>
           <div class="flex items-center my-6">
             <div
               class="flex items-center mr-4 overflow-hidden rounded text-primary group"
@@ -149,37 +147,21 @@
 </template>
 
 <script>
-import beautify from 'beautify'
 import EyeIcon from '@/assets/icons/eye-outline.svg?inline'
 import SnippetModal from '@/components/SnippetModal'
-
-import { component as VueCodeHighlight } from 'vue-code-highlight'
-import 'vue-code-highlight/themes/prism-tomorrow.css'
 
 export default {
   components: {
     EyeIcon,
     SnippetModal,
-    VueCodeHighlight,
-  },
-  filters: {
-    formatCSS(css) {
-      if (!css) return ''
-      return beautify(css, { format: 'css' })
-    },
-    formatJS(js) {
-      if (!js) return ''
-      return beautify(js, { format: 'js' })
-    },
-    formatHTML(html) {
-      if (!html) return ''
-      return beautify(html, { format: 'html' })
-    },
   },
   async asyncData({ $content, params }) {
     const snippets = await $content('snippets')
       .where({ slug: params.snippet })
       .fetch()
+
+    console.log(snippets[0])
+
     return { snippet: snippets[0] }
   },
   data() {
