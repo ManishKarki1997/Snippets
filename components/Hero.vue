@@ -14,18 +14,18 @@
           Free and ready to use CSS snippets for generic html components.
         </p>
         <div
-          class="relative flex items-center w-6/12 mx-auto mt-24 transition-all duration-300 rounded shadow-xl bg-secondary hover:shadow-2xl justify-evenly"
+          class="relative flex items-center mx-auto mt-24 transition-all duration-300 rounded shadow-xl lg:w-6/12 sm:w-full bg-secondary hover:shadow-2xl justify-evenly"
         >
           <SearchIcon
-            class="absolute top-0 left-0 w-6 h-6 mt-5 ml-4 fill-current text-secondary"
+            class="absolute top-0 left-0 w-4 h-4 mt-5 ml-4 fill-current md:w-6 md:h-6 text-secondary"
           />
           <input
-            v-model="searchQuery"
             id="search"
+            v-model="searchQuery"
             type="text"
             name="search"
             placeholder="Search for a component"
-            class="w-full py-4 pl-12 pr-4 text-lg rounded bg-secondary"
+            class="w-full py-4 pl-12 pr-4 rounded md:text-lg sm:text-md bg-secondary"
           />
         </div>
       </div>

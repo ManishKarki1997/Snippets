@@ -1,9 +1,11 @@
 <template>
-  <div style="height: calc(100vh - 4rem)" class="w-full bg-primary">
-    <div class="container flex w-full h-full">
-      <div class="flex items-center justify-center w-5/12 bg-primary">
+  <div style="min-height: calc(100vh - 4rem)" class="w-full pt-16 bg-primary">
+    <div
+      class="container w-full h-32 md:h-full md:flex sm:flex-col md:flex-row"
+    >
+      <div class="flex items-center justify-center w-full md:w-5/12 bg-primary">
         <div
-          style="height: 80vh"
+          style="height: 100%"
           class="w-full overflow-hidden border border-gray-800 rounded shadow-xl"
         >
           <img
@@ -17,8 +19,10 @@
           />
         </div>
       </div>
-      <div class="w-7/12 px-4 py-10 bg-primary text-primary">
-        <div class="w-full h-full px-6 py-6 rounded bg-secondary">
+      <div
+        class="w-full sm:my-8 md:my-0 md:px-4 md:w-7/12 bg-primary text-primary"
+      >
+        <div class="w-full h-full px-6 rounded sm:py-6 bg-secondary">
           <div class="w-full">
             <h4
               v-shared-element:[`${snippet.slug}-title-${snippet.demo_image}`]="{
@@ -123,7 +127,12 @@
               }"
               class="px-2 py-1 mb-2 mr-2 transition-all duration-300 rounded text-accent"
             >
-              <button class="cursor-pointer">#{{ tag }}</button>
+              <button
+                class="cursor-pointer"
+                @click="$router.push(`/tags/${tag}`)"
+              >
+                #{{ tag }}
+              </button>
             </div>
           </div>
         </div>

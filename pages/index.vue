@@ -47,10 +47,18 @@
         </div> -->
       </div>
 
-      <div class="grid gap-8 pb-8 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1">
-        <div v-for="(snippet, i) in snippets" :key="'snippet-' + i">
-          <Snippet :snippet="snippet" />
-        </div>
+      <div
+        class="grid pb-8 md:gap-8 sm:gap-2 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1"
+      >
+        <Snippet
+          v-for="(snippet, i) in snippets"
+          :key="'snippet-' + i"
+          :snippet="snippet"
+        />
+      </div>
+
+      <div class="pb-6 mt-6">
+        <Pagination @handleNext="handleNext" @handlePrev="handlePrev" />
       </div>
     </div>
   </div>
@@ -59,6 +67,7 @@
 <script>
 import Hero from '@/components/Hero'
 import Category from '@/components/Category'
+import Pagination from '@/components/Pagination'
 import Snippet from '@/components/Snippet'
 import { mapState } from 'vuex'
 
@@ -67,16 +76,15 @@ export default {
     Hero,
     Category,
     Snippet,
+    Pagination,
   },
-  // async asyncData({ $content, params }) {
-  //   const snippets = await $content('snippets').limit(20).fetch()
-  //   return { snippets }
-  // },
 
   data() {
     return {
       snippets: [],
       page: 1,
+      itemsCount: 20,
+      maxPage: 1,
       categories: [
         {
           name: 'Buttons',
@@ -130,22 +138,49 @@ export default {
       immediate: true,
       async handler(query) {
         if (!query) {
-          this.snippets = await this.$content('snippets').limit(20).fetch()
+          this.snippets = await this.$content('snippets')
+            .limit(this.itemsCount)
+            .fetch()
+
+          const allSnippets = await this.$content('snippets').fetch()
+          this.maxPage = allSnippets.length
         } else {
           this.snippets = await this.$content('snippets')
-            .limit(20)
             .search(query)
+            .limit(this.itemsCount)
             .fetch()
         }
       },
     },
   },
-  mounted() {
-    // this.fetchSnippets()
-  },
   methods: {
+    async handleNext() {
+      if (this.maxPage === this.page) return
+      this.page++
+      const snippets = await this.$content('snippets')
+        .skip((this.page - 1) * this.itemsCount)
+        .limit(this.itemsCount)
+        .fetch()
+
+      this.snippets = snippets
+    },
+    async handlePrev() {
+      if (this.page === 1) {
+        return
+      }
+      this.page--
+
+      const snippets = await this.$content('snippets')
+        .skip((this.page - 1) * this.itemsCount)
+        .limit(this.itemsCount)
+        .fetch()
+
+      this.snippets = snippets
+    },
     async fetchSnippets() {
-      const snippets = await this.$content('snippets').limit(20).fetch()
+      const snippets = await this.$content('snippets')
+        .limit(this.itemsCount)
+        .fetch()
       this.snippets = snippets
     },
   },
