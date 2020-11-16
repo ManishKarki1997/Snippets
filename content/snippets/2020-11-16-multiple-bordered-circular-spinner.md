@@ -7,7 +7,9 @@ description: >-
   You can replace 'transparent' with any color to set the border background color. 
 
 
-  > border: var(--loader-radius) solid transparent;
+
+
+  `border: var(--loader-radius) solid transparent;`
 demo_image: /images/uploads/multiple-bordered-circular-spinner.gif
 html: <div class="loader"></div>
 css: |-
