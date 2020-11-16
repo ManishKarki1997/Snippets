@@ -2,7 +2,6 @@
   <div
     tabindex="0"
     class="mb-2 overflow-hidden transition-all duration-300 rounded-lg shadow-xl cursor-pointer h-36 bg-secondary hover:shadow-xl group"
-    @click="viewSnippet(snippet)"
   >
     <div class="w-full h-56">
       <img
@@ -13,14 +12,16 @@
         class="object-cover w-full h-full"
         :src="snippet.demo_image"
         alt="Snippet Image"
+        @click="viewSnippet(snippet)"
       />
     </div>
-    <div class="px-4 mt-4 mb-4">
+    <div class="h-16 px-4 mt-4 mb-4">
       <p
         v-shared-element:[`${snippet.slug}-title-${snippet.demo_image}`]="{
           includeChildren: true,
         }"
         class="-mt-1 text-lg font-bold tracking-wide"
+        @click="viewSnippet(snippet)"
       >
         {{ snippet.title }}
       </p>
@@ -35,7 +36,9 @@
         }"
         class="px-2 py-1 mb-2 mr-2 transition-all duration-300 rounded text-accent"
       >
-        <button class="cursor-pointer">#{{ tag }}</button>
+        <button class="cursor-pointer" @click="$router.push(`/tags/${tag}`)">
+          #{{ tag }}
+        </button>
       </div>
     </div>
   </div>

@@ -2,7 +2,10 @@
   <div class="bg-primary text-primary">
     <Hero class="pt-16 lg:pt-32" />
     <div class="container mt-32">
-      <div class="grid gap-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+      <div
+        v-if="!searchQuery"
+        class="grid gap-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1"
+      >
         <div v-for="(category, i) in categories" :key="'category-' + i">
           <Category :category="category" />
         </div>
@@ -12,7 +15,7 @@
           <span class="font-bold">{{ snippets.length }}</span> Snippets
         </p>
 
-        <div class="flex items-center px-3">
+        <!-- <div class="flex items-center px-3">
           <label
             class="block mr-2 text-xs font-bold tracking-wide uppercase text-secondary"
             for="grid-state"
@@ -41,7 +44,7 @@
               </svg>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div class="grid gap-8 pb-8 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1">
@@ -57,6 +60,7 @@
 import Hero from '@/components/Hero'
 import Category from '@/components/Category'
 import Snippet from '@/components/Snippet'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -64,13 +68,15 @@ export default {
     Category,
     Snippet,
   },
-  async asyncData({ $content, params }) {
-    const snippets = await $content('snippets').fetch()
-    return { snippets }
-  },
+  // async asyncData({ $content, params }) {
+  //   const snippets = await $content('snippets').limit(20).fetch()
+  //   return { snippets }
+  // },
 
   data() {
     return {
+      snippets: [],
+      page: 1,
       categories: [
         {
           name: 'Buttons',
@@ -115,6 +121,33 @@ export default {
         },
       ],
     }
+  },
+  computed: {
+    ...mapState(['searchQuery']),
+  },
+  watch: {
+    searchQuery: {
+      immediate: true,
+      async handler(query) {
+        if (!query) {
+          this.snippets = await this.$content('snippets').limit(20).fetch()
+        } else {
+          this.snippets = await this.$content('snippets')
+            .limit(20)
+            .search(query)
+            .fetch()
+        }
+      },
+    },
+  },
+  mounted() {
+    // this.fetchSnippets()
+  },
+  methods: {
+    async fetchSnippets() {
+      const snippets = await this.$content('snippets').limit(20).fetch()
+      this.snippets = snippets
+    },
   },
 
   head() {

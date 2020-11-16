@@ -20,6 +20,7 @@
             class="absolute top-0 left-0 w-6 h-6 mt-5 ml-4 fill-current text-secondary"
           />
           <input
+            v-model="searchQuery"
             id="search"
             type="text"
             name="search"
@@ -37,6 +38,16 @@ import SearchIcon from 'assets/icons/search-outline.svg?inline'
 export default {
   components: {
     SearchIcon,
+  },
+  data() {
+    return {
+      searchQuery: '',
+    }
+  },
+  watch: {
+    searchQuery(val) {
+      this.$store.commit('SET_SEARCH_QUERY', val)
+    },
   },
 }
 </script>

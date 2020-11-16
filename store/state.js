@@ -2,6 +2,7 @@ function state() {
   return {
     snippets: [],
     notifications: [],
+    searchQuery: '',
   }
 }
 

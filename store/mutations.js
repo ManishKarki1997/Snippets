@@ -8,8 +8,10 @@ const mutation = {
     )
   },
   SET_SNIPPETS(state, snippets) {
-    console.log(snippets)
     state.snippets = snippets
+  },
+  SET_SEARCH_QUERY(state, searchQuery) {
+    state.searchQuery = searchQuery
   },
 }
 
