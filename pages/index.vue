@@ -70,6 +70,7 @@ import Category from '@/components/Category'
 import Pagination from '@/components/Pagination'
 import Snippet from '@/components/Snippet'
 import { mapState } from 'vuex'
+import categories from '@/seeds/categories'
 
 export default {
   components: {
@@ -85,49 +86,7 @@ export default {
       page: 1,
       itemsCount: 20,
       maxPage: 1,
-      categories: [
-        {
-          name: 'Buttons',
-          iconName: 'SquareIcon',
-          description:
-            'Buttons with SVG icons, animations, transitions and hover effects',
-          total: 31,
-        },
-        {
-          name: 'Loaders',
-          iconName: 'SquareIcon',
-          description: 'Different variations of loaders made purely using CSS',
-          total: 14,
-        },
-        {
-          name: 'Cards',
-          iconName: 'CircleIcon',
-          description:
-            'Beautiful CSS cards, vertical and horizontal with different variations',
-          total: 11,
-        },
-        {
-          name: 'Avatars',
-          iconName: 'CircleIcon',
-          description:
-            'User avatars : circular, square and rounded, with badges and variations',
-          total: 7,
-        },
-        {
-          name: 'Box Shadows',
-          iconName: 'SquareIcon',
-          description:
-            'Beautiful box shadows with varying intensity, for all use cases',
-          total: 12,
-        },
-        {
-          name: 'Searches',
-          iconName: 'CircleIcon',
-          description:
-            'Input search component with SVG icons, animations and transitions',
-          total: 7,
-        },
-      ],
+      categories,
     }
   },
   computed: {

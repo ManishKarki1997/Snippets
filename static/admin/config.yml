@@ -12,7 +12,7 @@ collections:
     format: 'frontmatter'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    public_folder: '/images/uploads'
+    public_folder: 'static/images/uploads'
     editor:
       preview: false
     fields:

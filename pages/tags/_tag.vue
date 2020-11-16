@@ -29,6 +29,7 @@
       </div>
 
       <div
+        v-if="snippets.length > 0"
         class="grid gap-8 pb-8 mt-16 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1"
       >
         <Snippet
@@ -36,6 +37,15 @@
           :key="'snippet-' + i"
           :snippet="snippet"
         />
+      </div>
+
+      <div
+        v-if="snippets.length == 0"
+        class="flex items-center justify-center w-full h-64 text-center text-primary"
+      >
+        <h4 class="text-xl font-semibold tracking-wider sm:text-lg">
+          No snippets found with the tag {{ $route.params.tag }}
+        </h4>
       </div>
     </div>
   </div>

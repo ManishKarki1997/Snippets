@@ -2,6 +2,7 @@
   <div
     tabindex="0"
     class="px-4 py-8 mb-2 transition-all duration-300 rounded-lg shadow cursor-pointer h-36 bg-secondary hover:shadow-xl group"
+    @click="$router.push(`/tags/${category.tag}`)"
   >
     <div class="flex">
       <div
