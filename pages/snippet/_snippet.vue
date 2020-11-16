@@ -35,7 +35,7 @@
           </div>
           <div class="flex items-center my-6">
             <div
-              class="flex items-center mr-4 overflow-hidden rounded text-primary group"
+              class="flex items-center mr-4 overflow-hidden rounded bg-primary text-primary group"
             >
               <div
                 class="h-full px-2 py-1 transition-all duration-300 transform -translate-x-20 rounded-sm cursor-pointer text-primary group-hover:translate-x-0 hover:text-accent"
@@ -101,12 +101,12 @@
               >
                 <EyeIcon
                   class="w-5 h-5 text-current stroke-2"
-                  @click="showSelectedSnippet('html')"
+                  @click="showSelectedSnippet('tailwind')"
                 />
               </div>
               <button
                 class="flex items-center px-2 py-1 transition-all duration-300 transform -translate-x-5 group-hover:-translate-x-1 text-primary"
-                @click="copySnippet('html')"
+                @click="copySnippet('tailwind')"
               >
                 Tailwind
               </button>
@@ -160,50 +160,12 @@ export default {
       .where({ slug: params.snippet })
       .fetch()
 
-    console.log(snippets[0])
-
     return { snippet: snippets[0] }
   },
   data() {
     return {
       showSnippet: false,
       selectedSnippet: null,
-      code: {
-        javascript: `
-        const http = require('http');
-
-        const bodyParser = require('body-parser');
-
-        http
-        .createServer((req, res) => {
-          bodyParser.parse(req, (error, body) => {
-            res.end(body)
-          })
-        })
-        .listen(3000)
-
-         const http = require('http');
-
-        const bodyParser = require('body-parser');
-
-        http
-        .createServer((req, res) => {
-          bodyParser.parse(req, (error, body) => {
-            res.end(body)
-          })
-        })
-        .listen(3000)`,
-        css: `
-          .button{
-            padding:4px 6px;
-            border-radius:5px;
-          }
-        `,
-        html: `
-          <div>hello world</div>
-          <p>what is up?</p>
-        `,
-      },
     }
   },
   methods: {
@@ -221,7 +183,7 @@ export default {
     copySnippet(language) {
       this.selectedSnippet = {
         language,
-        snippet: this.code[language],
+        snippet: this.snippet[language],
       }
       // wait like 50ms to set the "selectedSnippet"
       setTimeout(() => {

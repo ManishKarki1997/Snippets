@@ -68,6 +68,7 @@ export default {
     const snippets = await $content('snippets').fetch()
     return { snippets }
   },
+
   data() {
     return {
       categories: [

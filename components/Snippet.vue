@@ -4,18 +4,18 @@
     class="mb-2 overflow-hidden transition-all duration-300 rounded-lg shadow-xl cursor-pointer h-36 bg-secondary hover:shadow-xl group"
     @click="viewSnippet(snippet)"
   >
-    <div class="w-full h-64">
+    <div class="w-full h-56">
       <img
         v-shared-element:[`${snippet.slug}-image-${snippet.demo_image}`]="{
           includeChildren: true,
           duration: '500ms',
         }"
-        class="object-cover w-full"
+        class="object-cover w-full h-full"
         :src="snippet.demo_image"
         alt="Snippet Image"
       />
     </div>
-    <div class="px-4 my-4">
+    <div class="px-4 mt-4 mb-4">
       <p
         v-shared-element:[`${snippet.slug}-title-${snippet.demo_image}`]="{
           includeChildren: true,
@@ -25,7 +25,7 @@
         {{ snippet.title }}
       </p>
     </div>
-    <div class="flex items-center w-full px-4 py-2">
+    <div class="flex items-center w-full px-4">
       <div
         v-for="tag in snippet.tags"
         :key="snippet.slug + '-' + tag"

@@ -16,13 +16,19 @@
 
         <vue-code-highlight
           style="max-height: 80vh; height: 60vh"
-          :language="snippet.language"
+          :language="
+            snippet.language === 'tailwind' ? 'html' : snippet.language
+          "
         >
           <pre v-if="snippet.language === 'js'">
            {{ snippet.snippet | formatJS }}
             </pre
           >
-          <pre v-if="snippet.language === 'html'">
+          <pre
+            v-if="
+              snippet.language === 'html' || snippet.language === 'tailwind'
+            "
+          >
            {{ snippet.snippet | formatHTML }}
             </pre
           >
