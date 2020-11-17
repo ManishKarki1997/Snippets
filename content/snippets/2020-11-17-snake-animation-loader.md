@@ -1,7 +1,7 @@
 ---
 title: Snake Animation Loader
-description: " Simple loader CSS animation"
-demo_image: static/images/uploads/snake-animation-loader.gif
+description: ' Simple loader CSS animation'
+demo_image: images/uploads/snake-animation-loader.gif
 html: |-
   <div class="snake">
       <div></div>
