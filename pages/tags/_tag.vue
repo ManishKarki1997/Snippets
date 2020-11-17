@@ -6,8 +6,8 @@
       >
         <div class="flex items-center">
           <p>Snippets with the tag</p>
-          <h3 class="mx-2 text-lg font-bold tracking-wider underline">
-            {{ $route.params.tag }}
+          <h3 class="mx-2 text-lg font-bold tracking-wider">
+            ({{ $route.params.tag }})
           </h3>
           <p class="font-bold">({{ snippets.length }})</p>
         </div>
@@ -44,7 +44,8 @@
         class="flex items-center justify-center w-full h-64 text-center text-primary"
       >
         <h4 class="text-xl font-semibold tracking-wider sm:text-lg">
-          No snippets found with the tag {{ $route.params.tag }}
+          No snippets found with the tag
+          <span class="font-bold">({{ $route.params.tag }})</span>
         </h4>
       </div>
     </div>
